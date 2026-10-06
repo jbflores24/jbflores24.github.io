@@ -1,6 +1,4 @@
-# Portafolio · José Braulio Flores Martínez
+# jbflores24.github.io
 
-Sitio bilingüe (español / inglés) con casos de estudio de mis sistemas.
-Publicado con GitHub Pages en https://jbflores24.github.io
-
-Todas las capturas usan datos ficticios.
+- `/` — sitio personal (inicio, servicios, perfil, académico), bilingüe.
+- `/portafolio/` — portafolio de proyectos con capturas.
