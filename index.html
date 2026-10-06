@@ -45,6 +45,8 @@ p{margin:0}
 .top nav a:hover{color:var(--sea)}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--surface)}
 .lang button{font:500 .78rem/1 var(--mono);border:0;background:none;color:var(--muted);padding:.45rem .7rem;border-radius:999px;cursor:pointer}
+.theme-btn{display:inline-grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);cursor:pointer;margin-left:.5rem}
+.theme-btn:hover{border-color:var(--sea)}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 
 /* hero */
@@ -152,6 +154,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
       <button type="button" id="btn-es" data-set-lang="es" aria-pressed="true">ES</button>
       <button type="button" id="btn-en" data-set-lang="en" aria-pressed="false">EN</button>
     </div>
+    <button type="button" class="theme-btn" id="theme-btn" aria-label="Tema claro / oscuro · Light / dark theme" title="Claro / Oscuro · Light / Dark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
   </nav>
 </header>
 
@@ -430,6 +433,15 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
   var saved=null; try{saved=localStorage.getItem('lang');}catch(e){}
   setLang(saved || ((navigator.language||'es').toLowerCase().indexOf('es')===0?'es':'en'));
   document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.setLang);});});
+
+  var root=document.documentElement;
+  try{var th=localStorage.getItem('theme'); if(th)root.setAttribute('data-theme',th);}catch(e){}
+  var tb=document.getElementById('theme-btn');
+  if(tb)tb.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    var n=cur==='dark'?'light':'dark'; root.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme',n);}catch(e){}
+  });
 
   var cb=document.getElementById('copy-mail');
   if(cb){cb.addEventListener('click',function(){
