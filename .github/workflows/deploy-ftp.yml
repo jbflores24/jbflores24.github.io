@@ -1,0 +1,27 @@
+name: Deploy sitio personal (FTP)
+on:
+  push:
+    branches: [sitio-personal]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Subir por FTP
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_DIR || './' }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            README.md
+      - name: Aviso si faltan secretos
+        if: env.FTP_SERVER == ''
+        run: echo "::warning::Faltan los secretos FTP_SERVER, FTP_USERNAME y FTP_PASSWORD; no se desplegó."
