@@ -35,7 +35,7 @@
   function draw(t){x.clearRect(0,0,W,H);
     L.forEach(function(o){
       if(!reduce){o.x+=o.s;if(o.x-o.l>W){o.x=-20;o.y=Math.random()*H}}
-      x.beginPath();x.strokeStyle='rgba(255,107,157,'+o.a+')';x.lineWidth=1.2;
+      x.beginPath();x.strokeStyle='rgba(255,138,61,'+o.a+')';x.lineWidth=1.2;
       x.moveTo(o.x-o.l,o.y);
       x.bezierCurveTo(o.x-o.l*.6,o.y+Math.sin(o.p+t/1500)*10,o.x-o.l*.3,o.y-Math.sin(o.p+t/1500)*10,o.x,o.y);x.stroke();});
     if(!reduce)requestAnimationFrame(draw)}
