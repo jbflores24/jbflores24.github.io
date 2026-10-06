@@ -117,3 +117,8 @@ footer.foot .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-bet
 footer.foot a{color:var(--muted)}
 .note{font-size:.92rem;color:var(--muted);border-left:3px solid var(--ochre);padding-left:14px;margin-top:20px}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.btn:hover{transform:none}}
+
+.availability{color:#b6c4d8;font-size:1rem;max-width:65ch;margin-top:20px}
+.card .chips{margin-top:16px}
+.hero .eyebrow{overflow-wrap:anywhere}
+@media(min-width:821px) and (max-width:980px){nav.main a{padding:8px;font-size:.9rem}.bar{gap:10px}}

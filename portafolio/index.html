@@ -63,6 +63,10 @@ p{margin:0}
 .btn:hover{border-color:var(--sea)}
 .btn.primary:hover{background:var(--sea)}
 
+/* Evidence entry points */
+.evidence{padding-bottom:1.5rem;display:grid;gap:1rem}
+.evidence h2{font-size:clamp(1.5rem,3vw,2rem)}
+.evidence .index{margin-bottom:1rem}
 /* índice */
 .index{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);margin-bottom:clamp(3rem,7vw,5rem)}
 .index a{display:grid;gap:.3rem;padding:1rem 1.1rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;min-width:0}
@@ -181,6 +185,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
   </div>
 </section>
 
+<section class="evidence" aria-labelledby="evidence-title"><h2 id="evidence-title"><span class="es">Código público para revisar</span><span class="en">Public code to review</span></h2><p><span class="es">Tres puntos de entrada: una API Laravel, el framework PHP y una aplicación de ejemplo. Lenguas, pitIA y la plantilla se presentan como casos de estudio con código privado.</span><span class="en">Three entry points: a Laravel API, the PHP framework and a sample application. Lenguas, pitIA and the starter are private-code case studies.</span></p><div class="index"><a href="https://github.com/jbflores24/apiVariables"><span class="k"><span class="es">Laravel</span><span class="en">Laravel</span></span><span class="t">apiVariables</span><span class="s"><span class="es">Sanctum, permisos y pruebas</span><span class="en">Sanctum, permissions and tests</span></span></a><a href="https://github.com/jbflores24/jb-framework"><span class="k"><span class="es">Arquitectura PHP</span><span class="en">PHP architecture</span></span><span class="t">jb-framework</span><span class="s"><span class="es">Router, middleware, persistencia y CLI</span><span class="en">Router, middleware, persistence and CLI</span></span></a><a href="https://github.com/jbflores24/jb-framework-ejemplo_ecommerce"><span class="k"><span class="es">Aplicación de ejemplo</span><span class="en">Sample application</span></span><span class="t">Ecommerce demo</span><span class="s"><span class="es">API, frontend y checkout transaccional</span><span class="en">API, frontend and transactional checkout</span></span></a></div></section>
 <nav class="index" id="proyectos" aria-label="Proyectos">
   <a href="#lenguas"><span class="k"><span class="es">En producción</span><span class="en">In production</span></span><span class="t"><span class="es">Control de Lenguas</span><span class="en">Language Enrollment</span></span><span class="s"><span class="es">Inscripciones, calificaciones y constancias</span><span class="en">Enrollment, grades and certificates</span></span></a>
   <a href="#plantilla"><span class="k"><span class="es">Base reutilizable</span><span class="en">Reusable base</span></span><span class="t"><span class="es">Plantilla de sistemas</span><span class="en">Systems template</span></span><span class="s"><span class="es">Seguridad, auditoría y documentos PDF</span><span class="en">Security, auditing and PDF documents</span></span></a>
@@ -211,7 +216,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
       <li><span class="es">Despliegue continuo por FTP con GitHub Actions a un hosting compartido sin SSH.</span><span class="en">Continuous deployment over FTP with GitHub Actions to shared hosting without SSH.</span></li>
     </ul>
     <div class="chips"><span>PHP 8.3</span><span>JB Framework</span><span>MariaDB</span><span>Bootstrap 5</span><span>Chart.js</span><span>TCPDF</span><span>JWT</span><span>GitHub Actions</span></div>
-    <p class="code-note"><span class="es">Código privado por ser un sistema institucional. Puedo mostrarlo en una revisión técnica.</span><span class="en">Private code, since it's an institutional system. I can walk through it in a technical review.</span></p>
+    <p class="code-note"><span class="es">Sistema institucional con código privado. Las capturas muestran su funcionamiento; no hay un repositorio público para inspeccionar.</span><span class="en">Institutional system with private code. Screenshots show its functionality; there is no public repository to inspect.</span></p>
   </div>
   <div class="gallery" data-gallery>
     <div class="browser">
@@ -247,7 +252,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
       <li><span class="es">Importación y exportación masiva de catálogos.</span><span class="en">Bulk import and export of catalogs.</span></li>
     </ul>
     <div class="chips"><span>PHP 8.2</span><span>JB Framework</span><span>MySQL</span><span>Bootstrap 5</span><span>TCPDF</span><span>JWT</span></div>
-    <p class="code-note"><span class="es">Código privado. Disponible para revisión bajo solicitud.</span><span class="en">Private code. Available for review on request.</span></p>
+    <p class="code-note"><span class="es">Código privado. Caso de estudio de una base reutilizable en desarrollo.</span><span class="en">Private code. Case study of a reusable base in development.</span></p>
   </div>
   <div class="gallery" data-gallery>
     <div class="browser">
@@ -270,8 +275,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
     <span class="status wip"><span class="es">Preparando publicación en Google Play</span><span class="en">Preparing Google Play release</span></span>
     <h2>pitIA</h2>
     <p class="summary">
-      <span class="es">Asistente por voz para dar clases y conferencias. Escucha una pregunta, consulta un modelo de IA con el contexto de la materia y lee la respuesta en voz alta por los audífonos.</span>
-      <span class="en">A voice assistant for teaching and talks. It hears a question, queries an AI model with the course context, and reads the answer aloud through earbuds.</span>
+      <span class="es">Asistente por voz para dar clases y conferencias. Al pulsar el botón de la app, captura una pregunta, consulta un modelo de IA con el contexto de la materia y lee la respuesta por los audífonos.</span><span class="en">A voice assistant for teaching and talks. When the app button is pressed, it captures a question, queries an AI model with the course context and reads the answer through earbuds.</span>
     </p>
     <ul class="points">
       <li><span class="es">Reconocimiento y síntesis de voz nativos de Android; respuestas en streaming que empiezan a sonar con la primera frase.</span><span class="en">Native Android speech recognition and synthesis; streamed answers that start speaking at the first sentence.</span></li>
@@ -307,7 +311,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
       <li><span class="es">Formulario generado desde el catálogo de variables del servidor, con rango orientativo y última lectura.</span><span class="en">Form generated from the server's variable catalog, with reference ranges and the last reading.</span></li>
       <li><span class="es">Guardado de toda la visita en una sola transacción (todo o nada).</span><span class="en">The whole visit is saved in a single transaction (all or nothing).</span></li>
       <li><span class="es">Estadísticas a 7, 30 y 90 días con gráficas de tendencia; tema claro y oscuro.</span><span class="en">7, 30 and 90-day statistics with trend charts; light and dark themes.</span></li>
-      <li><span class="es">API con autenticación por token y 20 pruebas automatizadas.</span><span class="en">Token-authenticated API with 20 automated tests.</span></li>
+      <li><span class="es">API Laravel 10 con Sanctum y pruebas de integración para autenticación, permisos, validación y captura en lote.</span><span class="en">Laravel 10 API with Sanctum and integration tests for authentication, permissions, validation and batch capture.</span></li>
     </ul>
     <div class="chips"><span>Ionic 7</span><span>Angular 16</span><span>Capacitor 5</span><span>Laravel</span><span>Sanctum</span><span>PHPUnit</span></div>
     <div class="links"><a href="https://github.com/jbflores24/apiVariables" target="_blank" rel="noopener"><span class="es">Código de la API</span><span class="en">API source code</span> ↗</a></div>
@@ -346,7 +350,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
 <!-- JB FRAMEWORK -->
 <section class="fw" id="jb-framework">
   <div class="txt">
-    <span class="status"><span class="es">Código abierto · Base de todos mis sistemas</span><span class="en">Open source · Foundation of all my systems</span></span>
+    <span class="status"><span class="es">Código abierto · Base de mis APIs PHP propias</span><span class="en">Open source · Foundation of my custom PHP APIs</span></span>
     <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">JB Framework</h2>
     <p class="summary" style="font-size:1.06rem">
       <span class="es">Framework PHP 8.2 ligero para APIs REST JSON, escrito desde cero sin depender de Laravel ni Symfony. Prioriza código claro, seguridad por defecto y un núcleo pequeño que se pueda auditar.</span>
@@ -385,6 +389,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
 }</pre>
 </section>
 
+<section class="fw" id="ecommerce"><div class="txt"><span class="status wip"><span class="es">Demostración · Código público</span><span class="en">Demo · Public code</span></span><h2>Ecommerce con JB Framework</h2><p><span class="es">Aplicación de ejemplo que conecta una API REST y un frontend web: catálogo, clientes, pedidos y checkout. Permite revisar cómo uso el framework fuera de su núcleo.</span><span class="en">Sample application connecting a REST API and a web frontend: catalog, customers, orders and checkout. Shows how I use the framework beyond its core.</span></p><p class="code-note"><span class="es">Es una demostración técnica, no una tienda en producción ni una pasarela de pagos.</span><span class="en">A technical demo, not a production store or a payment gateway.</span></p><div class="links"><a href="https://github.com/jbflores24/jb-framework-ejemplo_ecommerce"><span class="es">Revisar API y frontend</span><span class="en">Review API and frontend</span> ↗</a></div></div><div class="txt"><h3><span class="es">Qué puedes inspeccionar</span><span class="en">What you can inspect</span></h3><ul class="points"><li><span class="es">Checkout dentro de una transacción y descuento de stock condicionado a la disponibilidad.</span><span class="en">Transactional checkout and stock deduction conditional on availability.</span></li><li><span class="es">Importes en centavos, catálogo con filtros y separación entre API e interfaz.</span><span class="en">Amounts in cents, filtered catalog and separation between API and interface.</span></li><li><span class="es">Documentación de ejecución local con Windows y WAMP.</span><span class="en">Local execution documentation for Windows and WAMP.</span></li></ul></div></section>
 <!-- SOBRE MI -->
 <section class="about" id="sobre-mi">
   <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem)"><span class="es">Sobre mí</span><span class="en">About me</span></h2>
@@ -394,8 +399,7 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
       <span class="en">I've worked at the Instituto Tecnológico de Salina Cruz (Tecnológico Nacional de México) since 2005, as a developer, server administrator and professor of Information and Communications Technology Engineering. I like owning a system end to end: understanding the process with the people who use it, modeling the data, coding, deploying and supporting it.</span>
     </p>
     <p>
-      <span class="es">Busco un puesto remoto donde pueda aportar esa experiencia de punta a punta.</span>
-      <span class="en">I'm looking for a remote role where I can bring that end-to-end experience.</span>
+      <span class="es">Busco colaboración remota por proyecto o a tiempo parcial, compatible con mi actividad docente.</span><span class="en">Seeking remote project-based or part-time collaboration compatible with my teaching commitments.</span>
     </p>
     <ul class="timeline">
       <li><span class="y">2005 – <span class="es">hoy</span><span class="en">now</span></span><span><span class="es">Desarrollador y profesor, TecNM Campus Salina Cruz</span><span class="en">Developer and professor, TecNM Salina Cruz campus</span></span></li>

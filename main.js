@@ -24,7 +24,8 @@
     var ok=function(){var s=cp.querySelector('.es'),e=cp.querySelector('.en');
       var a=[s.textContent,e.textContent];s.textContent='¡Copiado!';e.textContent='Copied!';
       setTimeout(function(){s.textContent=a[0];e.textContent=a[1]},1600)};
-    if(navigator.clipboard)navigator.clipboard.writeText(m).then(ok,ok);else ok();};
+    var fail=function(){var range=document.createRange();range.selectNodeContents(cp.previousElementSibling);var selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);};
+    if(navigator.clipboard)navigator.clipboard.writeText(m).then(ok,fail);else fail();};
 
   // hero: viento del Istmo
   var c=document.getElementById('wind');if(!c)return;
