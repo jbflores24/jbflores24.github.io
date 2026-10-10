@@ -248,6 +248,8 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
     <ul class="points">
       <li><span class="es">Constructor de módulos con relaciones muchos a muchos y maestro-detalle, campos calculados y reglas condicionales.</span><span class="en">Module builder with many-to-many and master-detail relations, calculated fields and conditional rules.</span></li>
       <li><span class="es">Flujos de estados con transiciones por rol, historial y controles de acceso por módulo.</span><span class="en">Role-based state workflows, transition history and per-module access control.</span></li>
+      <li><span class="es">Reglas que escriben en otro módulo dentro de la misma transacción (por ejemplo, descontar inventario) y llaves primarias compuestas.</span><span class="en">Rules that write to another module within the same transaction (e.g. decrementing inventory) and composite primary keys.</span></li>
+      <li><span class="es">Archivos e imágenes con almacenamiento privado y notificaciones por rol (campana y correo).</span><span class="en">Files and images with private storage and role-based notifications (in-app and email).</span></li>
       <li><span class="es">Plantillas PDF con tokens dinámicos, versiones, hash de validación y código QR.</span><span class="en">PDF templates with dynamic tokens, versions, validation hash and QR code.</span></li>
       <li><span class="es">Exportación e importación CSV, documentación OpenAPI y webhooks firmados con bandeja de salida.</span><span class="en">CSV import/export, OpenAPI documentation and signed webhooks with an outbox.</span></li>
       <li><span class="es">Exportación parcial de módulos a código PHP; el generador aún no cubre todas las funciones avanzadas.</span><span class="en">Partial PHP module code export; advanced features are not yet fully covered by the generator.</span></li>
@@ -257,14 +259,18 @@ footer{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-
   </div>
   <div class="gallery" data-gallery>
     <div class="browser">
-      <div class="bar"><i></i><span data-url>plantilla-sistema / admin/templates/editar/1</span></div>
-      <img data-main src="img/plantilla-editor.webp" width="1600" height="1000" alt="Editor de plantillas de documentos con tokens disponibles">
+      <div class="bar"><i></i><span data-url>plantilla-sistema / admin/constructor</span></div>
+      <img data-main src="img/plantilla-constructor.webp" width="1600" height="1000" alt="Constructor de módulos: lista de módulos generados desde tablas, con versión, estado y acciones">
     </div>
     <div class="thumbs">
-      <button type="button" aria-pressed="true" data-src="img/plantilla-editor.webp" data-path="admin/templates/editar/1" data-alt="Editor de plantillas de documentos con tokens disponibles"><img src="img/plantilla-editor.webp" alt="" loading="lazy"></button>
-      <button type="button" aria-pressed="false" data-src="img/plantilla-seguridad.webp" data-path="seguridad" data-alt="Panel de seguridad con IPs bloqueadas y registros sospechosos"><img src="img/plantilla-seguridad.webp" alt="" loading="lazy"></button>
-      <button type="button" aria-pressed="false" data-src="img/plantilla-reportes.webp" data-path="admin/reports" data-alt="Estadísticas de operaciones y distribución de roles"><img src="img/plantilla-reportes.webp" alt="" loading="lazy"></button>
-      <button type="button" aria-pressed="false" data-src="img/plantilla-auditoria.webp" data-path="auditoria" data-alt="Bitácora de auditoría con filtros"><img src="img/plantilla-auditoria.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="true" data-src="img/plantilla-constructor.webp" data-path="admin/constructor" data-alt="Constructor de módulos: lista de módulos generados desde tablas, con versión, estado y acciones"><img src="img/plantilla-constructor.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="img/plantilla-relaciones.webp" data-path="admin/constructor/editar · Relaciones" data-alt="Asistente del constructor: relación muchos a muchos con materias y detalle de pagos con totales"><img src="img/plantilla-relaciones.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="img/plantilla-reglas.webp" data-path="admin/constructor/editar · Reglas" data-alt="Constructor visual de reglas SI… ENTONCES con condición sobre un registro relacionado y mensaje de bloqueo"><img src="img/plantilla-reglas.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="img/plantilla-modulo.webp" data-path="modulos/alumnos" data-alt="Módulo generado sin programar: listado con filtros, estado en color y saldo calculado"><img src="img/plantilla-modulo.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="img/plantilla-flujo.webp" data-path="modulos/alumnos/editar/1" data-alt="Formulario generado con flujo de estados, botón de transición, historial y campo calculado"><img src="img/plantilla-flujo.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="img/plantilla-maestro-detalle.webp" data-path="modulos/alumnos/editar/1 · Pagos" data-alt="Maestro-detalle: materias seleccionadas y pestaña de pagos editable con totales"><img src="img/plantilla-maestro-detalle.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="img/plantilla-codigo.webp" data-path="admin/constructor/codigo" data-alt="Exportación del módulo a código PHP con la lista de lo que no se tradujo"><img src="img/plantilla-codigo.webp" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" data-src="img/plantilla-editor.webp" data-path="admin/templates/editar/1" data-alt="Editor de plantillas de documentos con tokens disponibles"><img src="img/plantilla-editor.webp" alt="" loading="lazy"></button>
     </div>
     <p class="caption"><span class="es">Capturas con datos ficticios.</span><span class="en">Screenshots with fictitious data.</span></p>
   </div>
