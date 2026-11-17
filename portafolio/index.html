@@ -61,8 +61,12 @@ ul.points li::marker{color:var(--accent)}
 .thumbs button{border:1px solid var(--line);background:var(--surface);padding:0;border-radius:6px;overflow:hidden;cursor:pointer;width:clamp(64px,18%,120px);opacity:.65}
 .thumbs button:hover{opacity:.9}
 .thumbs button[aria-pressed="true"]{opacity:1;outline:2px solid var(--accent);outline-offset:1px}
-.thumbs img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.thumbs img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
 .caption{font-size:.85rem;color:var(--muted)}
+.shot-title{margin:0;font:600 .82rem/1.3 var(--mono);color:var(--ink)}
+.thumbs .grp{flex-basis:100%;font:600 .7rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
+.thumbs .grp:first-child{margin-top:0}
+.gallery .phones{margin-top:.5rem}
 .phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:clamp(.6rem,1.5vw,1rem);align-items:start}
 .phone{margin:0;display:grid;gap:.45rem}
 .phone .scr{border:5px solid var(--navy-2);border-radius:22px;overflow:hidden;background:var(--navy-2);box-shadow:var(--shadow)}
@@ -317,8 +321,8 @@ pre.code .c{color:#7f93ad} pre.code .k{color:#ffb27a} pre.code .s{color:#8fd3c1}
     <span class="status"><span class="es">En producción · Web + API</span><span class="en">In production · Web + API</span></span>
     <h2><span class="es">Acortador de enlaces con QR y analítica</span><span class="en">Link shortener with QR codes and analytics</span></h2>
     <p class="summary">
-      <span class="es">Cada persona crea enlaces cortos de seis caracteres, ve sus visitas por día, país, ciudad, dispositivo y navegador, y descarga el código QR. Está disponible en español, inglés, portugués y francés, y se usa desde el navegador o desde una API con tokens.</span>
-      <span class="en">Each person creates six-character short links, sees visits per day, country, city, device and browser, and downloads the QR code. It is available in Spanish, English, Portuguese and French, and can be used from the browser or from a token-based API.</span>
+      <span class="es">Cada persona crea enlaces cortos de seis caracteres, ve sus visitas por día, país, ciudad, dispositivo y navegador, y descarga el código QR. Está disponible en español, inglés, portugués y francés, y se usa desde el navegador o desde una API con tokens. Un panel de administración maneja planes, usuarios, promociones, cupones, pagos y las landings públicas.</span>
+      <span class="en">Each person creates six-character short links, sees visits per day, country, city, device and browser, and downloads the QR code. It is available in Spanish, English, Portuguese and French, and can be used from the browser or from a token-based API. An administration panel handles plans, users, promotions, coupons, payments and the public landing pages.</span>
     </p>
     <dl class="brief">
       <div><dt><span class="es">El reto</span><span class="en">The challenge</span></dt><dd><span class="es">Ofrecer un acortador con analítica y QR que cobre por periodo, sin suscripciones automáticas, y que siga siendo barato de atender en un hosting compartido aunque crezca el tráfico.</span><span class="en">Offer a shortener with analytics and QR codes that charges by period, without automatic subscriptions, and that stays cheap to serve on shared hosting as traffic grows.</span></dd></div>
@@ -330,7 +334,8 @@ pre.code .c{color:#7f93ad} pre.code .k{color:#ffb27a} pre.code .s{color:#8fd3c1}
       <li><span class="es">Analítica con gráfica diaria, desgloses por país y dispositivo, bots separados de personas y exportación a CSV en el plan Pro.</span><span class="en">Analytics with a daily chart, breakdowns by country and device, bots kept apart from people, and CSV export on the Pro plan.</span></li>
       <li><span class="es">Código QR personalizable (colores con contraste verificado, estilos y logo) con descarga en PNG y SVG.</span><span class="en">Customizable QR code (colors with verified contrast, styles and logo) downloadable as PNG and SVG.</span></li>
       <li><span class="es">Planes con funciones activables por plan, cupones y promociones, y pagos por periodo prepagado con Stripe Checkout y Mercado Pago, con webhooks firmados.</span><span class="en">Plans with features enabled per plan, coupons and promotions, and prepaid period payments with Stripe Checkout and Mercado Pago, using signed webhooks.</span></li>
-      <li><span class="es">API REST con tokens y permisos por ruta, carga masiva desde CSV con revisión previa y más de 370 pruebas automatizadas.</span><span class="en">REST API with tokens and per-route permissions, bulk CSV import with a preview step, and more than 370 automated tests.</span></li>
+      <li><span class="es">API REST con tokens y permisos por ruta, carga masiva desde CSV con revisión previa y más de 400 pruebas automatizadas.</span><span class="en">REST API with tokens and per-route permissions, bulk CSV import with a preview step, and more than 400 automated tests.</span></li>
+      <li><span class="es">Constructor de landings por bloques solo para administración: 10 diseños con animaciones propias, borrador que se guarda solo, vista previa en vivo, versiones y publicación; el contenido se valida como datos, nunca como código.</span><span class="en">Administrators-only block-based landing builder: 10 designs with their own animations, an autosaved draft, live preview, versions and publishing; content is validated as data, never as code.</span></li>
     </ul>
     <div class="chips"><span>Laravel 13</span><span>Livewire 4</span><span>Jetstream</span><span>Sanctum</span><span>Tailwind CSS 4</span><span>Vite 8</span><span>Chart.js</span><span>MySQL / MariaDB</span><span>Stripe</span><span>Mercado Pago</span><span>PHPUnit</span><span>GitHub Actions</span></div>
     <div class="links"><a href="https://acrt.jbflores.com.mx" target="_blank" rel="noopener"><span class="es">Sitio en producción</span><span class="en">Live site</span> ↗</a></div>
@@ -338,16 +343,41 @@ pre.code .c{color:#7f93ad} pre.code .k{color:#ffb27a} pre.code .s{color:#8fd3c1}
   </div>
   <div class="gallery" data-gallery>
     <div class="browser">
-      <div class="urlbar"><i></i><span data-url>acrt · Inicio</span></div>
-      <img data-main src="img/acrt-landing.webp" width="1440" height="900" alt="Página de inicio de acrt con el titular «Acorta. Comparte. Mide.» y una vista previa de un enlace con QR y gráfica de visitas" loading="lazy">
+      <div class="urlbar"><i></i><span data-url>acrt.jbflores.com.mx/</span></div>
+      <img data-main src="img/acrt-inicio.webp" width="1440" height="900" alt="Página de inicio de acrt con el titular «Acorta. Comparte. Mide.» y una vista previa de un enlace con QR y gráfica de visitas" loading="lazy">
     </div>
+    <p class="shot-title"><span class="es" data-t-es>Inicio</span><span class="en" data-t-en>Home</span></p>
     <div class="thumbs">
-      <button type="button" aria-pressed="true" data-src="img/acrt-landing.webp" data-path="Inicio" data-alt="Página de inicio de acrt con el titular «Acorta. Comparte. Mide.» y una vista previa de un enlace con QR y gráfica de visitas"><img src="img/acrt-landing.webp" alt="" loading="lazy"></button>
-      <button type="button" aria-pressed="false" data-src="img/acrt-estadisticas.webp" data-path="Panel · Estadísticas" data-alt="Panel con la lista de enlaces, el código QR y las estadísticas de los últimos 7 días, con países y dispositivos"><img src="img/acrt-estadisticas.webp" alt="" loading="lazy"></button>
-      <button type="button" aria-pressed="false" data-src="img/acrt-qr.webp" data-path="Panel · Personalizar QR" data-alt="Panel con el editor de QR: colores de código y fondo, estilo y carga de logo"><img src="img/acrt-qr.webp" alt="" loading="lazy"></button>
-      <button type="button" aria-pressed="false" data-src="img/acrt-planes.webp" data-path="Planes" data-alt="Comparación de planes Gratis, Básico, Pro y Empresa con precios por periodo"><img src="img/acrt-planes.webp" alt="" loading="lazy"></button>
+      <span class="grp"><span class="es">Producto</span><span class="en">Product</span></span>
+      <button type="button" aria-pressed="true" aria-label="Inicio" data-src="img/acrt-inicio.webp" data-path="/" data-es="Inicio" data-en="Home" data-alt="Página de inicio de acrt con el titular «Acorta. Comparte. Mide.» y una vista previa de un enlace con QR y gráfica de visitas"><img src="img/acrt-inicio.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Panel de links" data-src="img/acrt-panel.webp" data-path="/dashboard" data-es="Panel de links" data-en="Links dashboard" data-alt="Panel con el acortador, la lista de links, el código QR y los botones de descarga"><img src="img/acrt-panel.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Estadísticas" data-src="img/acrt-estadisticas.webp" data-path="/dashboard" data-es="Estadísticas" data-en="Statistics" data-alt="Estadísticas de un link: resumen de la semana, gráfica de 30 días y desglose por país y dispositivo"><img src="img/acrt-estadisticas.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="QR personalizable" data-src="img/acrt-qr.webp" data-path="/dashboard" data-es="QR personalizable" data-en="Customizable QR" data-alt="Editor de QR con colores del código y del fondo, estilo y carga de logo"><img src="img/acrt-qr.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Tema oscuro" data-src="img/acrt-oscuro.webp" data-path="/dashboard" data-es="Tema oscuro" data-en="Dark theme" data-alt="Panel de links en tema oscuro"><img src="img/acrt-oscuro.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Planes y precios" data-src="img/acrt-planes.webp" data-path="/planes" data-es="Planes y precios" data-en="Plans and pricing" data-alt="Comparación de planes Gratis, Básico, Pro y Empresa con precios por periodo"><img src="img/acrt-planes.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Resumen con cupón" data-src="img/acrt-resumen.webp" data-path="/pagos/resumen" data-es="Resumen con cupón" data-en="Checkout with coupon" data-alt="Resumen de compra del plan Pro con un cupón aplicado, total y medio de pago"><img src="img/acrt-resumen.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Mi plan e historial" data-src="img/acrt-facturacion.webp" data-path="/facturacion" data-es="Mi plan e historial" data-en="My plan and history" data-alt="Mi plan: vencimiento, uso de links, funciones incluidas e historial de pagos con descuento"><img src="img/acrt-facturacion.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Documentación de la API" data-src="img/acrt-api.webp" data-path="/api-docs" data-es="Documentación de la API" data-en="API documentation" data-alt="Documentación pública de la API con ejemplo de curl, permisos del token y lista de endpoints"><img src="img/acrt-api.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <span class="grp"><span class="es">Landings y constructor</span><span class="en">Landings and builder</span></span>
+      <button type="button" aria-pressed="false" aria-label="Constructor por bloques" data-src="img/acrt-constructor.webp" data-path="/admin/landings" data-es="Constructor por bloques" data-en="Block builder" data-alt="Constructor de landings: lista de bloques con subir, bajar, ocultar y duplicar, y vista previa en vivo"><img src="img/acrt-constructor.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Diseño Aurora" data-src="img/acrt-lp-aurora.webp" data-path="/lp/aurora" data-es="Diseño Aurora" data-en="Aurora design" data-alt="Landing Aurora: titular grande sobre una malla de luz y una ventana del panel"><img src="img/acrt-lp-aurora.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Diseño Terminal" data-src="img/acrt-lp-terminal.webp" data-path="/lp/terminal" data-es="Diseño Terminal" data-en="Terminal design" data-alt="Landing Terminal: un POST a la API escrito solo en una terminal verde sobre negro"><img src="img/acrt-lp-terminal.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Diseño Telón" data-src="img/acrt-lp-telon.webp" data-path="/lp/telon" data-es="Diseño Telón" data-en="Curtain design" data-alt="Landing Telón: titular gigante «Tres pasos. Sin vueltas.» en crema y naranja sobre fondo oscuro"><img src="img/acrt-lp-telon.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Diseño Radar" data-src="img/acrt-lp-radar.webp" data-path="/lp/radar" data-es="Diseño Radar" data-en="Radar design" data-alt="Landing Radar de visitas: radar con barrido y puntos por país"><img src="img/acrt-lp-radar.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Diseño El corte" data-src="img/acrt-lp-corte.webp" data-path="/lp/corte" data-es="Diseño El corte" data-en="The cut design" data-alt="Landing editorial El corte, en papel y rojo"><img src="img/acrt-lp-corte.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Diseño Cuadrícula suiza" data-src="img/acrt-lp-suizo.webp" data-path="/lp/suizo" data-es="Diseño Cuadrícula suiza" data-en="Swiss grid design" data-alt="Landing de cuadrícula suiza en blanco, negro y rojo"><img src="img/acrt-lp-suizo.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <span class="grp"><span class="es">Administración</span><span class="en">Administration</span></span>
+      <button type="button" aria-pressed="false" aria-label="Usuarios y planes" data-src="img/acrt-admin-usuarios.webp" data-path="/admin/usuarios" data-es="Usuarios y planes" data-en="Users and plans" data-alt="Administración de usuarios: plan, límite propio y permiso de administrador por persona"><img src="img/acrt-admin-usuarios.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Promociones" data-src="img/acrt-admin-promociones.webp" data-path="/admin/promociones" data-es="Promociones" data-en="Promotions" data-alt="Promociones con fechas habituales de un clic: San Valentín, Buen Fin, Black Friday"><img src="img/acrt-admin-promociones.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Pagos" data-src="img/acrt-admin-pagos.webp" data-path="/admin/pagos" data-es="Pagos" data-en="Payments" data-alt="Listado de pagos con precio de lista, descuento, cupón y medio de pago"><img src="img/acrt-admin-pagos.webp" width="1440" height="900" alt="" loading="lazy"></button>
+      <button type="button" aria-pressed="false" aria-label="Configuración" data-src="img/acrt-admin-config.webp" data-path="/admin/configuracion" data-es="Configuración" data-en="Settings" data-alt="Configuración del sistema: plan por defecto, landing de inicio, moneda y modo de cada proveedor de cobro"><img src="img/acrt-admin-config.webp" width="1440" height="900" alt="" loading="lazy"></button>
     </div>
-    <p class="caption"><span class="es">Capturas de una cuenta de demostración local, con datos de prueba.</span><span class="en">Screenshots from a local demo account, with test data.</span></p>
+    <div class="phones">
+      <figure class="phone"><div class="scr"><img src="img/acrt-movil-inicio.webp" width="600" height="1298" alt="Inicio de acrt en teléfono con el titular y el ejemplo de link con QR" loading="lazy"></div><figcaption><span class="es">Inicio</span><span class="en">Home</span></figcaption></figure>
+      <figure class="phone"><div class="scr"><img src="img/acrt-movil-panel.webp" width="600" height="1298" alt="Panel de links en teléfono con el acortador y la lista de links" loading="lazy"></div><figcaption><span class="es">Panel</span><span class="en">Dashboard</span></figcaption></figure>
+      <figure class="phone"><div class="scr"><img src="img/acrt-movil-planes.webp" width="600" height="1298" alt="Página de planes en teléfono con la promoción vigente y el plan Gratis" loading="lazy"></div><figcaption><span class="es">Planes</span><span class="en">Plans</span></figcaption></figure>
+    </div>
+    <p class="caption"><span class="es">Capturas de una instalación local con datos de demostración; se muestra el dominio de producción. Las vistas de administración son las del panel solo para administradores.</span><span class="en">Screenshots from a local install with demo data, showing the production domain. The administration views belong to the administrators-only panel.</span></p>
   </div>
 </article>
 
@@ -443,6 +473,8 @@ document.querySelectorAll('[data-gallery]').forEach(function(g){
   g.querySelectorAll('.thumbs button').forEach(function(b){
     b.addEventListener('click',function(){
       main.src=b.dataset.src; main.alt=b.dataset.alt;
+      var te=g.querySelector('[data-t-es]'), tn=g.querySelector('[data-t-en]');
+      if(te&&b.dataset.es){te.textContent=b.dataset.es; tn.textContent=b.dataset.en;}
       var p=b.dataset.path; url.textContent = p.charAt(0)==='/' ? base+p : base+' / '+p;
       g.querySelectorAll('.thumbs button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
     });
