@@ -5,9 +5,8 @@
 
 ## Selección del portafolio
 
-- **Código público principal:** `apiVariables` (Laravel), `jb-framework` (arquitectura PHP) y `jb-framework-ejemplo_ecommerce` (aplicación de demostración).
-- **Evidencia complementaria:** `jbtest` y `pruebas_jb`, enlazados desde el framework por su propósito experimental.
-- **Casos con código privado:** Lenguas, pitIA y la plataforma modular (plantilla de sistemas, con constructores de módulos y de tableros). Las capturas no se presentan como acceso público a su implementación.
+- **Código público principal:** `apiVariables` (Laravel) y `jb-framework` (arquitectura PHP).
+- **Casos con código privado:** acrt (acortador de enlaces con planes y API), Lenguas, pitIA y la plataforma modular (plantilla de sistemas, con constructores de módulos y de tableros). Las capturas no se presentan como acceso público a su implementación.
 - **Caso secundario:** credencial QR, conservado como ejemplo de interfaz institucional.
 
 La selección cambia la presentación del sitio; no elimina repositorios ni modifica su visibilidad. Se mantienen las versiones española e inglesa y la disponibilidad para colaboración remota por proyecto o a tiempo parcial.
